@@ -1,0 +1,7 @@
+__pycache__/
+*.json
+.idea/
+*.csv
+*.pyc
+*.model
+.DS_Store
