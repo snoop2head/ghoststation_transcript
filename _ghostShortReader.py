@@ -2,13 +2,11 @@
 import io
 import os
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\pc\Desktop\ghostation\ghoststation.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"/Users/noopy/ghoststation_transcript/credentials.json"
+
 
 def run_quickstart():
     # [START speech_quickstart]
-    import io
-    import os
-
     # Imports the Google Cloud client library
     # [START migration_import]
     from google.cloud import speech
