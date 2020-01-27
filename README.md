@@ -1,6 +1,6 @@
 # ghoststation_transcript
 
-## 프로젝트 목적
+## 0. 프로젝트 목적
 신해철의 라디오 프로그램, 고스트스테이션의 전문을 STT를 이용하여 제작해보려고 합니다.
 This project's object is to document Shin Hae-Chul(crom)'s radio program(ghoststation) as transcript.
 - 현재 Google Cloud Speech to Text를 이용해서 스크립트를 콘솔에 출력하는 것까지 구현했습니다. 
