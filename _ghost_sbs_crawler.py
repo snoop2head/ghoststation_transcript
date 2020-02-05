@@ -1,31 +1,56 @@
 from selenium import webdriver
+from bs4 import BeautifulSoup
 import urllib.request
+from urllib.parse import urlparse, parse_qs
+from multiprocessing.dummy import Pool as ThreadPool
+import urllib3
 
 
+# chrome driver options
 options = webdriver.ChromeOptions()
 options.add_experimental_option("prefs", {
   "download.default_directory": r"/Users/noopy/ghoststation_transcript/downloadedmp3",
   "download.prompt_for_download": False,
   "download.directory_upgrade": True,
   "safebrowsing.enabled": True,
-  "headless": False
 })
+options.add_argument('headless')
 driver = webdriver.Chrome(r"/Applications/chromedriver", chrome_options=options)
 
+
+# get target url 
 url ="https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929"
 driver.get(url)
 
-# element = driver.find_element_by_class_name('podcast_btn_download')
-# print(element)
-
+# parse webpage 
 div = driver.find_element_by_class_name('podcast_btn_w')
 print(div)
 radio_mp3_link = div.find_element_by_css_selector('a').get_attribute('href')
-# video_url = driver.get(radio_mp3_link)
-urllib.request.urlretrieve(radio_mp3_link)
+print(radio_mp3_link)
+
+# get mp3 file name
+radio_link_queries_parsed = radio_mp3_link.split('/')
+last_item_of_the_list = radio_link_queries_parsed[-1]
+video_item_quries_parsed = last_item_of_the_list.split('%')
+file_name = video_item_quries_parsed[7][11:]
+print(file_name)
 
 
-# driver.find_elements_by_partial_link_text("podcastdown").click()
+# download video with url open
+resp = urllib.request.urlopen(radio_mp3_link)
+respHTML = resp.read()
+binfile = open("/Users/noopy/ghoststation_transcript/downloadedmp3/" + file_name, "wb")
+binfile.write(respHTML)
+binfile.close()
+
+# download video with url retrieve with multithreading
+# urllib.request.urlretrieve(radio_mp3_link)
+
+# download video with FancyURL opener and retrieve
+#test=urllib.request.urlopen() is not working, since it is for python 2.7
+# test=urllib.request.FancyURLopener()
+# test.retrieve(radio_mp3_link,file_name)
+
 
 
 """
