@@ -32,7 +32,9 @@ from google.cloud import speech_v1
 import io
 import os
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"/Users/noopy/ghoststation_transcript/credentials.json"
+os.environ[
+    "GOOGLE_APPLICATION_CREDENTIALS"
+] = r"/Users/noopy/ghoststation_transcript/credentials.json"
 
 
 def sample_long_running_recognize(local_file_path):
@@ -64,7 +66,7 @@ def sample_long_running_recognize(local_file_path):
 
     audio_channel_count = 2
     enable_separate_recognition_per_channel = True
-    language_code = 'ko-KR'
+    language_code = "ko-KR"
     config = {
         "audio_channel_count": audio_channel_count,
         "enable_separate_recognition_per_channel": enable_separate_recognition_per_channel,

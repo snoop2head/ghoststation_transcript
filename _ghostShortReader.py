@@ -1,8 +1,10 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 import io
 import os
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"/Users/noopy/ghoststation_transcript/credentials.json"
+os.environ[
+    "GOOGLE_APPLICATION_CREDENTIALS"
+] = r"/Users/noopy/ghoststation_transcript/credentials.json"
 
 
 def run_quickstart():
@@ -12,6 +14,7 @@ def run_quickstart():
     from google.cloud import speech
     from google.cloud.speech import enums
     from google.cloud.speech import types
+
     # [END migration_import]
 
     # Instantiates a client
@@ -20,15 +23,11 @@ def run_quickstart():
     # [END migration_client]
 
     # The name of the audio file to transcribe
-    file_name = os.path.join(
-        os.path.dirname(__file__),
-        '.',
-        'demo_short.flac')
-
+    file_name = os.path.join(os.path.dirname(__file__), ".", "demo_short.flac")
 
     audio_channel_count = 2
     enable_separate_recognition_per_channel = True
-    language_code = 'ko-KR'
+    language_code = "ko-KR"
     config = {
         "audio_channel_count": audio_channel_count,
         "enable_separate_recognition_per_channel": enable_separate_recognition_per_channel,
@@ -50,12 +49,12 @@ def run_quickstart():
     # [END speech_quickstart]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_quickstart()
 
 # audioconvert [--verbose/-v] convert "C:\Users\pc\Desktop\ghostation\z.past_files\aud_trim.mp3" "C:\Users\pc\Desktop\ghostation" [--output-format/-o flac]
 
-'''
+"""
 
 def run_quickstart():
     
@@ -102,4 +101,4 @@ def run_quickstart():
 
 if __name__ == '__main__':
     run_quickstart()
-'''
+"""
