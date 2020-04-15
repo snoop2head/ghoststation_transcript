@@ -3,6 +3,7 @@
 ## 0. 프로젝트 목적
 신해철의 라디오 프로그램, 고스트스테이션의 전문을 STT를 이용하여 제작해보려고 합니다.
 This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghoststation, as transcript.
+
 - 현재 Google Cloud Speech to Text를 이용해서 스크립트를 콘솔에 출력하는 것까지 구현했습니다. 
 - 향후 wikipedia 형태로 각 고스트스테이션 에피소드 별로 유저들이 자유롭게 열람 / 편집할 수 있도록 구현할 것입니다. [현재는 임시로 YNAW에 내용을 적어놓고 있습니다.](https://youneedawiki.com/app/page/1xlrjAihiMQSOPqYTowHzH5XDXNgEQkC4u_EoHc5ol0c)
 - [신해철의 고스트스테이션 음성 파일은 SBS의 MP3 파일을 이용하고 있습니다.](https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929) 
@@ -35,3 +36,9 @@ This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghosts
 
 - _ghost_transform.py는 mp3 파일을 flac 파일로 변환합니다. 
 
+
+
+## 💪 해결해야 할 점
+
+- [ ] sbs의 ghoststation 게시판은 pagination을 javascript로 한다. 즉 url에다가 "?page=2" 같은 query를 추가해도 의미가 없다. 다른 페이지에 있는 mp3 파일들을 다운로드 받기 위해서 다른 방법을 찾아야 한다.
+- [ ] _ghostLongreader.py는 용량제한이 있다. Google Cloud Bucket에 미리 mp3 파일을 올려놓고, STT 작업을 해야 한다. 
