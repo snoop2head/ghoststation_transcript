@@ -95,7 +95,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--local_file_path", type=str, default="2000010307-20181228-549.flac"
+        "--local_file_path", type=str, default="transformed_flac/test.flac"
     )
     args = parser.parse_args()
 
