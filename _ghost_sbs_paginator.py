@@ -2,9 +2,12 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.parse import urlparse, parse_qs
+import time
 
 
 # chrome driver options
@@ -37,9 +40,15 @@ while True:
     try:
         # Clicking on "2" on pagination on first iteration, "3" on second...
         page_number = str(page_count)
+
+        # clicking to paginate
         driver.find_element_by_id(
             f"program-front-radio-pagination-page-{page_number}"
         ).click()
+
+        # waiting for page to load in order to prevent staele element error
+        time.sleep(3)
+
     except NoSuchElementException:
         # Stop loop if no more page available
         break
