@@ -1,9 +1,5 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import StaleElementReferenceException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.parse import urlparse, parse_qs
@@ -23,7 +19,6 @@ options.add_experimental_option(
 )
 # options.add_argument("headless")
 driver = webdriver.Chrome(r"/Applications/chromedriver", chrome_options=options)
-ignored_exceptions = (StaleElementReferenceException,)
 
 
 # get target url

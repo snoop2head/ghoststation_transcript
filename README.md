@@ -40,5 +40,7 @@ This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghosts
 
 ## 💪 해결해야 할 점
 
-- [ ] sbs의 ghoststation 게시판은 pagination을 javascript로 한다. 즉 url에다가 "?page=2" 같은 query를 추가해도 의미가 없다. 다른 페이지에 있는 mp3 파일들을 다운로드 받기 위해서 다른 방법을 찾아야 한다.
+- [x] sbs의 ghoststation 게시판은 pagination을 javascript로 한다. 즉 url에다가 "?page=2" 같은 query를 추가해도 의미가 없다. 다른 페이지에 있는 mp3 파일들을 다운로드 받기 위해서 다른 방법을 찾아야 한다. 
+  -> Selenium click으로 해결
 - [ ] _ghostLongreader.py는 용량제한이 있다. Google Cloud Bucket에 미리 mp3 파일을 올려놓고, STT 작업을 해야 한다. 
+
