@@ -51,7 +51,9 @@ def sample_long_running_recognize(storage_uri):
         # First alternative is the most probable result
         alternative = result.alternatives[0]
         print(u"Transcript: {}".format(alternative.transcript))
+        # transcript to text file should be needed
 
 
+# uri designation needed
 uri = "gs://ghoststation/2000010307-20180831-456.flac"
 sample_long_running_recognize(uri)
