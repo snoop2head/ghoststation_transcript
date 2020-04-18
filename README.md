@@ -5,7 +5,7 @@
 This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghoststation, as transcript.
 
 - 현재 Google Cloud Speech to Text를 이용해서 스크립트를 콘솔에 출력하는 것까지 구현했습니다. 
-- 향후 wikipedia 형태로 각 고스트스테이션 에피소드 별로 유저들이 자유롭게 열람 / 편집할 수 있도록 구현할 것입니다. [현재는 임시로 YNAW에 내용을 적어놓고 있습니다.](https://youneedawiki.com/app/page/1xlrjAihiMQSOPqYTowHzH5XDXNgEQkC4u_EoHc5ol0c)
+- **스크립트의 파일들은 [transcribed_files에 .txt 파일로 저장됐습니다](./transcribed_files)**
 - [신해철의 고스트스테이션 음성 파일은 SBS의 MP3 파일을 이용하고 있습니다.](https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929) 
 
 
