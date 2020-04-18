@@ -2,8 +2,6 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.parse import urlparse, parse_qs
-from multiprocessing.dummy import Pool as ThreadPool
-import urllib3
 
 
 # chrome driver options
@@ -57,6 +55,7 @@ for div in divs:
 
 
 """
+# tag structure
 <a href="/radio/sghost/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2018%2F12%2Fpodcast-v2000010307-20181228-549.mp3%3Fvod_id%3DV2000010307%26podcast_id%3DP0000000579" class="podcast_btn_download" title="다운로드" download="549회 담배 확실하게 끊는 방법, 007에 대해서, 미국보다 북한이 더 나빠">
                                 <div class="podcast_btn_inner">
                                     <span class="prog_icn icon_download"><i class="ir">다운로드아이콘</i></span>
