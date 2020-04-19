@@ -7,7 +7,7 @@ os.environ[
     "GOOGLE_APPLICATION_CREDENTIALS"
 ] = r"/Users/noopy/ghoststation_transcript/snoop2head.json"
 
-
+# https://github.com/googleapis/python-speech/blob/master/samples/v1/speech_transcribe_async.py
 def sample_long_running_recognize(storage_uri):
     """
     Transcribe long audio file from Cloud Storage using asynchronous speech
@@ -47,13 +47,23 @@ def sample_long_running_recognize(storage_uri):
     print(u"Waiting for operation to complete...")
     response = operation.result()
 
+    url_root = uri.split(".")[0]
+    flac_name = url_root.split("/")[-1]
+    output_file_name = "./transcribed_files/" + flac_name + ".txt"
+
     for result in response.results:
         # First alternative is the most probable result
+        # print(result)
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
-        # transcript to text file should be needed
+        # print(u"Transcript: {}".format(alternative.transcript))
+        # print(alternative.confidence)
+        with open(f"{output_file_name}", "w", encoding="utf-8") as file:
+            file.write(alternative.transcript)
+
+    
 
 
 # uri designation needed
-uri = "gs://ghoststation/2000010307-20180831-456.flac"
+# uri = "gs://ghoststation/2000010307-20180831-456.flac"
+uri = "gs://ghoststation/test.flac"
 sample_long_running_recognize(uri)
