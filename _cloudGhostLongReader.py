@@ -52,18 +52,21 @@ def sample_long_running_recognize(storage_uri):
     output_file_name = "./transcribed_files/" + flac_name + ".txt"
 
     for result in response.results:
-        # First alternative is the most probable result
         # print(result)
+        # First alternative is the most probable result
         alternative = result.alternatives[0]
+
+        # print transcript and confidence
         # print(u"Transcript: {}".format(alternative.transcript))
         # print(alternative.confidence)
-        with open(f"{output_file_name}", "w", encoding="utf-8") as file:
-            file.write(alternative.transcript)
+
+        # write transcript on text file
+        with open(f"{output_file_name}", "a", encoding="utf-8") as file:
+            file.write(alternative.transcript + "\n")
 
     
-
-
 # uri designation needed
 # uri = "gs://ghoststation/2000010307-20180831-456.flac"
-uri = "gs://ghoststation/test.flac"
+# uri = "gs://ghoststation/test.flac"
+uri = "gs://ghoststation/2000010307-20181228-543.flac"
 sample_long_running_recognize(uri)
