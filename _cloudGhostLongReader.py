@@ -1,13 +1,17 @@
+# Transcribing long audio files: https://cloud.google.com/speech-to-text/docs/async-recognize#speech_transcribe_async-python
 from google.cloud import speech_v1
 from google.cloud.speech_v1 import enums
 import io
 import os
 
+# Authentification
+# documentation: https://googleapis.dev/python/google-api-core/latest/auth.html
 os.environ[
     "GOOGLE_APPLICATION_CREDENTIALS"
 ] = r"/Users/noopy/ghoststation_transcript/snoop2head.json"
 
-# https://github.com/googleapis/python-speech/blob/master/samples/v1/speech_transcribe_async.py
+# sample function: https://github.com/googleapis/python-speech/blob/master/samples/v1/speech_transcribe_async.py
+# documentation: https://googleapis.dev/python/speech/latest/index.html
 def sample_long_running_recognize(storage_uri):
     """
     Transcribe long audio file from Cloud Storage using asynchronous speech
@@ -19,20 +23,19 @@ def sample_long_running_recognize(storage_uri):
 
     client = speech_v1.SpeechClient()
 
-    # storage_uri = 'gs://cloud-samples-data/speech/brooklyn_bridge.raw'
-
-    # Sample rate in Hertz of the audio data sent
-    sample_rate_hertz = 44100
-
     # The language of the supplied audio
     language_code = "ko-KR"
 
+    # ghoststation radio is consisted of two channels
     audio_channel_count = 2
     enable_separate_recognition_per_channel = True
 
-    # Encoding of audio data sent. This sample sets this explicitly.
-    # This field is optional for FLAC and WAV audio formats.
+    # Sample rate in Hertz of the audio data sent
+    # sample rate hertz and encoding docs: https://cloud.google.com/speech-to-text/docs/encoding
     encoding = enums.RecognitionConfig.AudioEncoding.FLAC
+    sample_rate_hertz = 44100
+    
+    # json file to send to google speech recognition api
     config = {
         "sample_rate_hertz": sample_rate_hertz,
         "audio_channel_count": audio_channel_count,
@@ -67,6 +70,6 @@ def sample_long_running_recognize(storage_uri):
     
 # uri designation needed
 # uri = "gs://ghoststation/2000010307-20180831-456.flac"
-# uri = "gs://ghoststation/test.flac"
-uri = "gs://ghoststation/2000010307-20181228-543.flac"
+uri = "gs://ghoststation/test.flac"
+# uri = "gs://ghoststation/2000010307-20181228-543.flac"
 sample_long_running_recognize(uri)
