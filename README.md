@@ -1,6 +1,12 @@
 # ghoststation_transcript
 
+## 프로젝트 목적
 
+신해철의 라디오 프로그램, 고스트스테이션의 전문을 STT로 이용하여 제작해보려고 합니다.
+
+- **[스크립트의 파일들은 transcribed_files에 .txt 파일로 저장했습니다](./transcribed_files)**
+- 현재 ghoststation wikipedia를 제작 중이며, 향후 스크립트 파일들을 업로드할 예정입니다
+- [2001년 4월~2002년 12월 방송분량은 SBS 방송국의 MP3 파일을 크롤링했습니다.](./_ghost_sbs_crawler.py) 
 
 ## Project's purpose
 
@@ -8,17 +14,6 @@ This project's object is to archive Shin Hae-Chul(crom)'s radio program "Ghostst
 
 * Transcripts are saved at transcribed_files folder as .txt file format
 * [Apr 2001 ~ Dec 2002 radio program's transcripts are crawled from SBS radio station.](./_ghost_sbs_crawler.py)
-
-
-
-## 프로젝트 목적
-신해철의 라디오 프로그램, 고스트스테이션의 전문을 STT를 이용하여 제작해보려고 합니다.
-
-- **[스크립트의 파일들은 transcribed_files에 .txt 파일로 저장했습니다](./transcribed_files)**
-- 현재 ghoststation wikipedia를 제작 중이며, 향후 스크립트 파일들을 업로드할 예정입니다
-- [2001년 4월~2002년 12월 방송분량은 SBS 방송국의 MP3 파일을 크롤링했습니다.](./_ghost_sbs_crawler.py) 
-
-
 
 ## 1. 다운로드 및 환경설정
 
