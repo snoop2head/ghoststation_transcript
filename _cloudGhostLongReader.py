@@ -73,9 +73,9 @@ def sample_long_running_recognize(storage_uri):
         with open(f"{output_file_name}", "a", encoding="utf-8") as file:
             file.write(alternative.transcript + "\n")
 
-    
 # uri designation needed
+# file_name_without_type = "아직 어린데 여자친구가 임신을 했다 060817 신해철의 고스트네이션 고스트스테이션"
+# uri = "gs://ghoststation/" + file_name_without_type + ".flac"
 # uri = "gs://ghoststation/2000010307-20180831-456.flac"
-# uri = "gs://ghoststation/test.flac"
-uri = "gs://ghoststation/2000010307-20181228-543.flac"
+uri = "gs://ghoststation/아직 어린데 여자친구가 임신을 했다 060817 신해철의 고스트네이션 고스트스테이션.flac"
 sample_long_running_recognize(uri)
