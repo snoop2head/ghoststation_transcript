@@ -25,8 +25,8 @@ This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghosts
 
 ## 2. Google Cloud SDK로 Transcribe
 
-- [Google Cloud SDK Setup 방법은 해당 튜토리얼을 참고하십시오.](https://www.youtube.com/watch?v=Ds-7D8d-FwA) 
 - _cloudGhostLongReader.py는 40분 가량의 FLAC 파일을 한글 transcript로 출력합니다
+- [Google Cloud SDK Setup 방법은 해당 튜토리얼을 참고하십시오.](https://www.youtube.com/watch?v=Ds-7D8d-FwA) 
 
 ## 3. pydub으로 mp3에서 FLAC 파일로 변환
 
