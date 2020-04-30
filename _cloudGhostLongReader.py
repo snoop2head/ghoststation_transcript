@@ -10,12 +10,14 @@ os.environ[
     "GOOGLE_APPLICATION_CREDENTIALS"
 ] = r"/Users/noopy/ghoststation_transcript/snoop2head.json"
 
-# sample function: https://github.com/googleapis/python-speech/blob/master/samples/v1/speech_transcribe_async.py
+# long running audio STT function for FLAC files in google cloud storage
 # documentation: https://googleapis.dev/python/speech/latest/index.html
 def sample_long_running_recognize(storage_uri):
     """
     Transcribe long audio file from Cloud Storage using asynchronous speech
     recognition
+
+    https://github.com/googleapis/python-speech/blob/master/samples/v1/speech_transcribe_async.py
 
     Args:
       storage_uri URI for audio file in Cloud Storage, e.g. gs://[BUCKET]/[FILE]
@@ -27,8 +29,11 @@ def sample_long_running_recognize(storage_uri):
     language_code = "ko-KR"
 
     # ghoststation radio is consisted of two channels
+    # Transcribing audio with multiple channels: https://cloud.google.com/speech-to-text/docs/multi-channel
     audio_channel_count = 2
-    enable_separate_recognition_per_channel = True
+    
+    # separating recognition enables multiple speakers recognition
+    enable_separate_recognition_per_channel = False
 
     # Sample rate in Hertz of the audio data sent
     # sample rate hertz and encoding docs: https://cloud.google.com/speech-to-text/docs/encoding
@@ -36,6 +41,7 @@ def sample_long_running_recognize(storage_uri):
     sample_rate_hertz = 44100
     
     # json file to send to google speech recognition api
+    # arguments list: https://cloud.google.com/speech-to-text/docs/reference/rest/v1p1beta1/RecognitionConfig
     config = {
         "sample_rate_hertz": sample_rate_hertz,
         "audio_channel_count": audio_channel_count,
@@ -70,6 +76,6 @@ def sample_long_running_recognize(storage_uri):
     
 # uri designation needed
 # uri = "gs://ghoststation/2000010307-20180831-456.flac"
-uri = "gs://ghoststation/test.flac"
-# uri = "gs://ghoststation/2000010307-20181228-543.flac"
+# uri = "gs://ghoststation/test.flac"
+uri = "gs://ghoststation/2000010307-20181228-543.flac"
 sample_long_running_recognize(uri)
