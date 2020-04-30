@@ -33,8 +33,8 @@ This project's object is to archive Shin Hae-Chul(crom)'s radio program "Ghostst
 
 ## 2. Google Cloud SDK로 Transcribe
 
-- _cloud_transcriber.py는 Google Cloud Storage에 위치한 40분 분량의 FLAC 파일을 한글 transcript로 출력합니다.
-- _local_transcriber.py는 local 폴더에 위치한 4분 분량의 FLAC 파일을 한글 transcript로 출력합니다. 그러나 Google Cloud API 제한이 있기 때문에 5분 이상 분량의 오디오 파일은 _cloud_transcriber.py를 이용해야 합니다. 
+- _ghost_cloud_transcriber.py는 Google Cloud Storage에 위치한 40분 분량의 FLAC 파일을 한글 transcript로 출력합니다.
+- _local_transcriber.py는 local 폴더에 위치한 4분 분량의 FLAC 파일을 한글 transcript로 출력합니다. 그러나 Google Cloud API 제한이 있기 때문에 5분 이상 분량의 오디오 파일은 _ghost_cloud_transcriber.py를 이용해야 합니다. 
 - [Google Cloud SDK Setup 방법은 해당 튜토리얼을 참고하십시오.](https://www.youtube.com/watch?v=Ds-7D8d-FwA) 
 
 ## 3. pydub으로 mp3에서 FLAC 파일로 변환
