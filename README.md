@@ -4,9 +4,9 @@
 신해철의 라디오 프로그램, 고스트스테이션의 전문을 STT를 이용하여 제작해보려고 합니다.
 This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghoststation, as transcript.
 
-- **스크립트의 파일들은 [transcribed_files에 .txt 파일로 저장됐습니다](./transcribed_files)**
-- [현재 ghoststation wikipedia를 제작 중이며, 향후 스크립트 파일들을 업로드할 예정입니다](https://github.com/snoop2head/ghoststation_wiki)
-- [신해철의 고스트스테이션 음성 파일은 SBS의 MP3 파일을 이용하고 있습니다.](https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929) 
+- **[스크립트의 파일들은 transcribed_files에 .txt 파일로 저장했습니다](./transcribed_files)**
+- 현재 ghoststation wikipedia를 제작 중이며, 향후 스크립트 파일들을 업로드할 예정입니다
+- [2001년 4월~2002년 12월 방송분량은](https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929) SBS의 MP3 파일을 이용하고 있습니다. 
 
 
 
@@ -25,25 +25,10 @@ This project's object is to document Shin Hae-Chul(crom)'s radio program, Ghosts
 
 ## 2. Google Cloud SDK로 Transcribe
 
-- [Google Cloud SDK Setup Step-by-step 국문 튜토리얼입니다.](https://www.youtube.com/watch?v=Ds-7D8d-FwA) 
-- _ghostLongreader.py는 1분 이상의 FLAC 파일을 한글 transcript로 출력합니다.
-- _ghostShortreader.py는 1분 미만의 FLAC 파일을 한글 transcript로 출력합니다.
+- [Google Cloud SDK Setup 방법은 해당 튜토리얼을 참고하십시오.](https://www.youtube.com/watch?v=Ds-7D8d-FwA) 
 - _cloudGhostLongReader.py는 40분 가량의 FLAC 파일을 한글 transcript로 출력합니다
-- mic_to_script.py는 마이크로 입력된 한국 음성을 실시간으로 한글 transcript로 출력합니다
-
-
 
 ## 3. pydub으로 mp3에서 FLAC 파일로 변환
 
 - _ghost_transform.py는 mp3 파일을 flac 파일로 변환합니다. 
-
-
-
-## 💪 해결해야 할 점
-
-- [x] sbs의 ghoststation 게시판은 pagination을 javascript로 한다. 즉 url에다가 "?page=2" 같은 query를 추가해도 의미가 없다. 다른 페이지에 있는 mp3 파일들을 다운로드 받기 위해서 다른 방법을 찾아야 한다. 
-  -> Selenium click으로 해결
-- [x] _ghostLongreader.py는 용량제한이 있다. Google Cloud Bucket에 미리 mp3 파일을 올려놓고, STT 작업을 해야 한다. 
-- [x] transcript to text file should be needed
-- [ ] uri designation needed
 
