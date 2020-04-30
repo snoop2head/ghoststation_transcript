@@ -1,4 +1,4 @@
-# Transcribing long audio files: https://cloud.google.com/speech-to-text/docs/async-recognize#speech_transcribe_async-python
+# Transcribing long audio files on cloud storage: https://cloud.google.com/speech-to-text/docs/async-recognize#speech_transcribe_async-python
 from google.cloud import speech_v1
 from google.cloud.speech_v1 import enums
 import io
@@ -48,6 +48,7 @@ def sample_long_running_recognize(storage_uri):
         "enable_separate_recognition_per_channel": enable_separate_recognition_per_channel,
         "language_code": language_code,
         "encoding": encoding,
+        "enable_word_time_offsets": True
     }
     audio = {"uri": storage_uri}
 
@@ -59,23 +60,35 @@ def sample_long_running_recognize(storage_uri):
     url_root = uri.split(".")[0]
     flac_name = url_root.split("/")[-1]
     output_file_name = "./transcribed_files/" + flac_name + ".txt"
-
+    
+    # parsing speech to text response
+    # API RESPONSE EXAMPLE: https://cloud.google.com/speech-to-text/docs/basics#time-offsets
+    # print(response.results)
     for result in response.results:
-        # print(result)
-        # First alternative is the most probable result
+        # First option is the most probable result
         alternative = result.alternatives[0]
 
-        # print transcript and confidence
+        # print transcript
         # print(u"Transcript: {}".format(alternative.transcript))
+
+        # print confidence
         # print(alternative.confidence)
+
+        # print timestamp for the first word of the transcript
+        transcript_timestamp = str(alternative.words[0].start_time.seconds)
 
         # write transcript on text file
         with open(f"{output_file_name}", "a", encoding="utf-8") as file:
+            # write the timestamp
+            file.write(transcript_timestamp + ": ")
+            
+            # write the script
             file.write(alternative.transcript + "\n")
 
 # uri designation needed
-# file_name_without_type = "아직 어린데 여자친구가 임신을 했다 060817 신해철의 고스트네이션 고스트스테이션"
-# uri = "gs://ghoststation/" + file_name_without_type + ".flac"
 # uri = "gs://ghoststation/2000010307-20180831-456.flac"
-uri = "gs://ghoststation/아직 어린데 여자친구가 임신을 했다 060817 신해철의 고스트네이션 고스트스테이션.flac"
+# uri = "gs://ghoststation/아직 어린데 여자친구가 임신을 했다 060817 신해철의 고스트네이션 고스트스테이션.flac"
+file_name_without_type = "2000010307-20181012-480"
+uri = "gs://ghoststation/" + file_name_without_type + ".flac"
+
 sample_long_running_recognize(uri)
