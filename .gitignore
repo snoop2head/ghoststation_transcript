@@ -9,3 +9,4 @@ __pycache__/
 *.mov
 downloadedmp3/
 transformed_flac/
+_old/
