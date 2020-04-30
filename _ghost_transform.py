@@ -4,14 +4,9 @@ import os
 import glob
 
 
-def transform(file_name_without_format, src):
+def transform(file_name_without_format, src, abs_dst):
     # files
-    # src = r"C:/Users/pc/Desktop/ghostation/z.past_files/" + file_name_without_format + ".mp3"
-    dst = (
-        "/Users/noopy/ghoststation_transcript/transformed_flac/"
-        + file_name_without_format
-        + ".flac"
-    )
+    dst = abs_dst + file_name_without_format + ".flac"
 
     # convert wav to mp3
     sound = AudioSegment.from_mp3(src)
@@ -19,10 +14,7 @@ def transform(file_name_without_format, src):
     print("done")
 
 
-def move_transform():
-    # change the source directory to your project directory
-    # source = '/path/to/source_folder'
-    source = "/Users/noopy/ghoststation_transcript/downloadedmp3/"
+def move_transform(source, destination):
 
     mp3_file_list = glob.glob(source + "*.mp3")
     print(mp3_file_list)
@@ -31,7 +23,15 @@ def move_transform():
         print(item)
         item_name_list = item.split(".")[-2]
         item_name = item_name_list.split("/")[-1]
-        transform(item_name, item)
+        transform(item_name, item, destination)
 
 
-move_transform()
+# change the source directory to your project directory
+# source = "/Users/noopy/ghoststation_transcript/downloadedmp3/"
+# destination = "/Users/noopy/ghoststation_transcript/transformed_flac/"
+
+
+absolute_source = "/Users/noopy/ghoststation_transcript/test_mp3/"
+absolute_destination = "/Users/noopy/ghoststation_transcript/test_flac/"
+
+move_transform(absolute_source, absolute_destination)

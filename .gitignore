@@ -7,6 +7,5 @@ __pycache__/
 .DS_Store
 *.zip
 *.mov
-*.mp3
-/Users/noopy/ghoststation_transcript/transformed_flac
-*.flac
+downloadedmp3/
+transformed_flac/
