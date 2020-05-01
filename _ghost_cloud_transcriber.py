@@ -87,7 +87,7 @@ def sample_long_running_recognize(storage_uri):
 
 # uri designation for the audio files in Google Cloud Storage
 # uri = "gs://ghoststation/행복은 재능이다 060114 신해철의 고스트네이션 고스트스테이션.flac"
-file_name_without_type = "2000010307-20181012-480"
+file_name_without_type = "1496385999608"
 uri = "gs://ghoststation/" + file_name_without_type + ".flac"
 
 sample_long_running_recognize(uri)
