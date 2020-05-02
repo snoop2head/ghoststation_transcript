@@ -4,12 +4,13 @@ from bs4 import BeautifulSoup
 import urllib.request
 from urllib.parse import urlparse, parse_qs
 import time
+import glob
 
 
 # designate target url
 url = "https://programs.sbs.co.kr/radio/sghost/gorealrapod/56929"
 
-# chrome driver options
+# chrome driver options: downloading option and headless
 options = webdriver.ChromeOptions()
 options.add_experimental_option(
     "prefs",
@@ -21,12 +22,17 @@ options.add_experimental_option(
     },
 )
 options.add_argument("headless")
+
 driver = webdriver.Chrome(r"/Applications/chromedriver", chrome_options=options)
 
 # open url link with driver
 driver.get(url)
 
+# get file list that already exist in ./downloadedmp3
+mp3_file_list = glob.glob("downloadedmp3/*.mp3")
+print(mp3_file_list)
 
+# first page
 page_count = 1
 while True:
     # parse webpage
@@ -34,26 +40,42 @@ while True:
     # print(divs)
     for div in divs:
         radio_mp3_link = div.find_element_by_css_selector("a").get_attribute("href")
-        print(radio_mp3_link)
+        # print(radio_mp3_link)
 
         # get mp3 file name
         radio_link_queries_parsed = radio_mp3_link.split("/")
         last_item_of_the_list = radio_link_queries_parsed[-1]
         video_item_quries_parsed = last_item_of_the_list.split("%")
         file_name = video_item_quries_parsed[7][11:]
-        print(file_name)
-        # download video with url open
-        resp = urllib.request.urlopen(radio_mp3_link)
-        respHTML = resp.read()
-        binfile = open(
-            "/Users/noopy/ghoststation_transcript/downloadedmp3/" + file_name, "wb"
-        )
-        binfile.write(respHTML)
-        binfile.close()
+
+        # if mp3 file exists in folder, don't download.
+        if any(file_name in s for s in mp3_file_list):
+            print(file_name + " already exists")
+            pass
+        # if mp3 file does not exist in folder, then download
+        else:
+            # download video with url open
+            resp = urllib.request.urlopen(radio_mp3_link)
+            respHTML = resp.read()
+            binfile = open(
+                "/Users/noopy/ghoststation_transcript/downloadedmp3/" + file_name, "wb"
+            )
+            binfile.write(respHTML)
+            binfile.close()
+            print(file_name + " is downloaded")
+
+    # get next bundle of 10 pages
+    # print(page_count)
+    if page_count % 10 == 0:
+        driver.find_element_by_id("program-front-radio-pagination-next").click()
+        time.sleep(3)
+    else:
+        pass
 
     # Increase page_count value on each iteration on +1
     page_count += 1
 
+    # paginate
     try:
         # Clicking on "2" on pagination on first iteration, "3" on second...
         page_number = str(page_count)
@@ -65,18 +87,9 @@ while True:
 
         # waiting for page to load in order to prevent staele element error
         time.sleep(3)
-
     except NoSuchElementException:
         # Stop loop if no more page available
         break
-
-# download video with url retrieve with multithreading
-# urllib.request.urlretrieve(radio_mp3_link)
-
-# download video with FancyURL opener and retrieve
-# test=urllib.request.urlopen() is not working, since it is for python 2.7
-# test=urllib.request.FancyURLopener()
-# test.retrieve(radio_mp3_link,file_name)
 
 
 """
@@ -88,3 +101,11 @@ while True:
                                 </div>
                             </a>
 """
+
+# download video with url retrieve -> Too Slow
+# urllib.request.urlretrieve(radio_mp3_link)
+
+# download video with FancyURL opener and retrieve -> Not working
+# test=urllib.request.urlopen() is not working, since it is for python 2.7
+# test=urllib.request.FancyURLopener()
+# test.retrieve(radio_mp3_link,file_name)

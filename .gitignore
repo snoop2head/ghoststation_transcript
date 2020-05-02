@@ -10,3 +10,4 @@ __pycache__/
 downloadedmp3/
 transformed_flac/
 _old/
+test.py
