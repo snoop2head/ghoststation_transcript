@@ -6,7 +6,6 @@
 
 - **[텍스트 스크립트들을 transcribed_files에 .txt 파일 형태로 저장했습니다](./transcribed_files)**
 - 현재 ghoststation wikipedia를 제작 중이며, 향후 스크립트 파일들을 업로드할 예정입니다
-- [2001년 4월~2002년 12월 방송분량은 SBS 방송국의 MP3 파일을 크롤링했습니다.](./_ghost_sbs_crawler.py) 
 
 ## Project's purpose
 
@@ -36,3 +35,9 @@ This project's object is to archive Shin Hae-Chul(crom)'s radio program "Ghostst
 
 - _ghost_transform.py는 mp3 파일을 flac 파일로 변환합니다. 
 
+
+
+## 고스트스테이션 MP3 파일 출처
+
+* [2011년 5월 ~ 2012년 10월: iMBC 신해철의 고스트스테이션 팟캐스트](http://www.imbc.com/broad/radio/fm4u/ghoststation/podcast/index.html)
+* [2001년 4월~2002년 12월: SBS 방송국의 MP3 파일](./_ghost_sbs_crawler.py) 
