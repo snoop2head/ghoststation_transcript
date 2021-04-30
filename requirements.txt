@@ -31,7 +31,7 @@ pylint==2.4.4
 python-slugify==4.0.0
 pytz==2019.3
 requests==2.22.0
-rsa==4.0
+rsa==4.7
 six==1.14.0
 soupsieve==1.9.5
 text-unidecode==1.3
